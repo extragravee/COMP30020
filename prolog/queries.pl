@@ -9,6 +9,7 @@ member(Elt, [Elt|_]).
 member(Elt, [_|Rest]) :-
 	member(Elt, Rest).
 
+
 %check if two elements are adjacent
 %=====================================
 adjacent(E1, E2, List) :-
@@ -19,4 +20,37 @@ adjacent(E1, E2, List) :-
 adjacent2(E1, E2, [E1, E2|_]).
 adjacent2(E1, E2, [_|Rest]):-
 	adjacent2(E1, E2, Rest).
+
+
+%check if a list is a proper list
+%=====================================
+proper_list([]).
+proper_list([_|Tail]) :-
+	proper_list(Tail).
+	
+
+%check if every element of list is Elt
+%=====================================
+listof(_, []).
+listof(Elt, [Elt|Rest]) :-
+	listof(Elt,Rest).
+	
+	
+%check if every element of list is Elt
+%=====================================
+allsame([Elt|List]) :-
+	listof(Elt, List).
+	
+	
+%check if E1 appears before E2 in List
+%=====================================
+before(E1, E2, List) :-
+    append(_, [E1|Rest], List),
+    member(E2, Rest).
+    
+%method2
+before(E1, E2, [E1|List]):-
+	member(E2, List).
+before(E1, E2, [_, List]):-
+	before(E1, E2, List).
 
