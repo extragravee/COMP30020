@@ -54,3 +54,21 @@ before(E1, E2, [E1|List]):-
 before(E1, E2, [_, List]):-
 	before(E1, E2, List).
 
+%check if elems in X appear in Y, 
+%can be anywhere, but same order
+%===================================
+
+sublist([],_).
+
+sublist([X|Xs], [_|Ys]) :-
+    sublist([X|Xs], Ys).
+
+sublist([X|Xs], [X|Ys]) :-
+   sublist(Xs, Ys).
+   
+%check cards
+valid_card(card(Rank, _)) :-
+        (integer(Rank) ->
+        between(1, 10, Rank)
+    ; memberchk(Rank, [ace, jack, queen, king])).   
+	
