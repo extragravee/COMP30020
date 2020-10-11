@@ -1,25 +1,22 @@
 
 
-data Note = A|B|C|D|E|F|G
-    deriving (Show, Eq)
-
-data Octave = O1|O2|O3
-    deriving (Eq)
-
-instance Show Octave where
-    show = showOctave
-
-showOctave :: Octave -> String
-showOctave O1 = "1"
-showOctave O2 = "2"
-showOctave O3 = "3"
-
-
-data Pitch = Pitch Note Octave
+data Pitch = Pitch Char Char
     deriving (Eq)
 
 instance Show Pitch where
     show = showPitch
 
 showPitch:: Pitch -> String
-showPitch (Pitch n o) = show n ++ showOctave o 
+showPitch (Pitch note octave) = [note, octave]
+
+validPitch:: Pitch -> Bool
+validPitch (Pitch n o) = (elem n "ABCDEFG") && (elem o "123")
+
+toPitch:: String -> Maybe Pitch
+toPitch str
+    | ((length str) /= 2)  = Nothing
+    | validPitch pitch     = Just pitch
+    | otherwise            = Nothing
+    where pitch = Pitch note octave
+          note  = str !! 0
+          octave= str !! 1
