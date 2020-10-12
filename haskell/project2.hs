@@ -1,4 +1,4 @@
-
+import Data.List
 
 data Pitch = Pitch Char Char
     deriving (Eq)
@@ -24,12 +24,20 @@ toPitch str
 -------------------------------------------
 -- first is target, next is guess
 
-feedback :: [Pitch] -> [Pitch] -> (Int, Int, Int)
+feedback:: [Pitch] -> [Pitch] -> (Int,Int,Int)
 feedback target guess = (pitches, notes, octaves)
-                     where pitches = countMatches target guess --change to remove matched pitch
-                           notes   = countMatches (map noteFromPitch target) (map noteFromPitch guess)
-                           octaves = countMatches (map octFromPitch target) (map octFromPitch guess)
---countPitches [Pitch 'A' '1',Pitch 'B' '2',Pitch 'A' '3'] [Pitch 'A' '1',Pitch 'A' '2',Pitch 'B' '1']
+                     where newTarget = target \\ guess
+                           newGuess  = guess \\ target
+                           pitches   = 3 - (length newTarget)
+                           notes     = countElem noteFromPitch newTarget newGuess
+                           octaves   = countElem octFromPitch  newTarget newGuess
+
+-- takes in a function arg, takes in target and guess and counts
+-- the matching notes or octaves depending on the passed function
+countElem:: (Pitch -> Char) ->[Pitch] -> [Pitch] -> Int
+countElem f newTarget newGuess = (length newTarget) - (length (a \\ b))
+                            where a = map f newTarget
+                                  b = map f newGuess
 
 noteFromPitch:: Pitch -> Char
 noteFromPitch (Pitch x _) = x
@@ -37,17 +45,24 @@ noteFromPitch (Pitch x _) = x
 octFromPitch:: Pitch -> Char
 octFromPitch (Pitch _ x) = x
 
+-- feedback :: [Pitch] -> [Pitch] -> (Int, Int, Int)
+-- feedback target guess = (pitches, notes, octaves)
+--                      where pitches = countMatches target guess --change to remove matched pitch
+--                            notes   = countMatches (map noteFromPitch target) (map noteFromPitch guess)
+--                            octaves = countMatches (map octFromPitch target) (map octFromPitch guess)
+-- -- countPitches [Pitch 'A' '1',Pitch 'B' '2',Pitch 'A' '3'] [Pitch 'A' '1',Pitch 'A' '2',Pitch 'B' '1']
 
-countMatches:: Eq a => [a] -> [a] -> Int
-countMatches _ [] = 0
-countMatches target (x:xs)
-    | elem x target = 1 + countMatches target xs
-    | otherwise     = countMatches target xs
+
+-- countMatches:: Eq a => [a] -> [a] -> Int
+-- countMatches _ [] = 0
+-- countMatches target (x:xs)
+--     | elem x target = 1 + countMatches target xs
+    -- | otherwise     = countMatches target xs
 
 
 
-first_elem :: String -> Char
-first_elem str = head str
+-- first_elem :: String -> Char
+-- first_elem str = head str
 
 
 
