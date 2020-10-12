@@ -63,15 +63,25 @@ allPossibleNotes (x:xs) = [ Pitch x y | y <- "123"] ++ allPossibleNotes xs
 
 type Chord = [Pitch]
 
+-- generated valid 1330 chords that are possible
 allPossibleChords:: [Chord]
 allPossibleChords = nub (validChord [[x, y, z] | x <- notes, y <-notes, z<-notes ])
                  where notes = allPossibleNotes "ABCDEFG"
 
+-- filters out chords that have duplicate pitches
 validChord :: [Chord] -> [Chord]
 validChord [] = []
 validChord (x:xs)
     | length (nub x) == 3  = (sort x):validChord xs
     | otherwise            = validChord xs
 
+--------------------------------------------------
+-- contains currently viable candidate chords
+data GameState = GameState [Chord]
+    deriving (Show)
 
+initialGuess:: (Chord, GameState)
+initialGuess = (pitch, gstate)
+             where pitch  = [Pitch 'A' '1', Pitch 'B' '1', Pitch 'D' '2']
+                   gstate = GameState allPossibleChords
 
