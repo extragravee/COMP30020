@@ -43,3 +43,23 @@ countMatches _ [] = 0
 countMatches target (x:xs)
     | elem x target = 1 + countMatches target xs
     | otherwise     = countMatches target xs
+
+
+
+first_elem :: String -> Char
+first_elem str = head str
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
