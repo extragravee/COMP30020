@@ -1,7 +1,7 @@
 import Data.List
 
 data Pitch = Pitch Char Char
-    deriving (Eq)
+    deriving (Eq, Ord)
 
 instance Show Pitch where
     show = showPitch
@@ -45,36 +45,33 @@ noteFromPitch (Pitch x _) = x
 octFromPitch:: Pitch -> Char
 octFromPitch (Pitch _ x) = x
 
--- feedback :: [Pitch] -> [Pitch] -> (Int, Int, Int)
--- feedback target guess = (pitches, notes, octaves)
---                      where pitches = countMatches target guess --change to remove matched pitch
---                            notes   = countMatches (map noteFromPitch target) (map noteFromPitch guess)
---                            octaves = countMatches (map octFromPitch target) (map octFromPitch guess)
--- -- countPitches [Pitch 'A' '1',Pitch 'B' '2',Pitch 'A' '3'] [Pitch 'A' '1',Pitch 'A' '2',Pitch 'B' '1']
+------------------------------------------------------
 
+-- -- records 
+-- data GameState = GameState [Chord]
+--                             deriving (Show)
 
--- countMatches:: Eq a => [a] -> [a] -> Int
--- countMatches _ [] = 0
--- countMatches target (x:xs)
---     | elem x target = 1 + countMatches target xs
-    -- | otherwise     = countMatches target xs
+-- initialGuess:: (Chord, GameState)
+-- initialGuess = (pitch, gstate)
+--              where pitch  = [Pitch 'A' '1', Pitch 'B' '1', Pitch 'C' '1']
+--                    gstate = GameState 
 
+-- idea from https://stackoverflow.com/questions/32093912/all-combinations-of-elements-of-two-lists-in-haskell
+allPossibleNotes:: String -> [Pitch]
+allPossibleNotes [] = []
+allPossibleNotes (x:xs) = [ Pitch x y | y <- "123"] ++ allPossibleNotes xs
 
+type Chord = [Pitch]
 
--- first_elem :: String -> Char
--- first_elem str = head str
+allPossibleChords:: [Chord]
+allPossibleChords = nub (validChord [[x, y, z] | x <- notes, y <-notes, z<-notes ])
+                 where notes = allPossibleNotes "ABCDEFG"
 
-
-
-
-
-
-
-
-
-
-
-
+validChord :: [Chord] -> [Chord]
+validChord [] = []
+validChord (x:xs)
+    | length (nub x) == 3  = (sort x):validChord xs
+    | otherwise            = validChord xs
 
 
 
