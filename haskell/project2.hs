@@ -56,17 +56,16 @@ octFromPitch (Pitch _ x) = x
 --              where pitch  = [Pitch 'A' '1', Pitch 'B' '1', Pitch 'C' '1']
 --                    gstate = GameState 
 
--- idea from https://stackoverflow.com/questions/32093912/all-combinations-of-elements-of-two-lists-in-haskell
-allPossibleNotes:: String -> [Pitch]
-allPossibleNotes [] = []
-allPossibleNotes (x:xs) = [ Pitch x y | y <- "123"] ++ allPossibleNotes xs
+allPossiblePitches:: String -> [Pitch]
+allPossiblePitches [] = []
+allPossiblePitches (x:xs) = [ Pitch x y | y <- "123"] ++ allPossiblePitches xs
 
 type Chord = [Pitch]
 
 -- generated valid 1330 chords that are possible
 allPossibleChords:: [Chord]
-allPossibleChords = nub (validChord [[x, y, z] | x <- notes, y <-notes, z<-notes ])
-                 where notes = allPossibleNotes "ABCDEFG"
+allPossibleChords = nub (validChord [[x, y, z] | x <- pitches, y <-pitches, z<-pitches ])
+                 where pitches = allPossiblePitches "ABCDEFG"
 
 -- filters out chords that have duplicate pitches
 validChord :: [Chord] -> [Chord]
@@ -80,8 +79,42 @@ validChord (x:xs)
 data GameState = GameState [Chord]
     deriving (Show)
 
+-- hardcoded initial guess
+-- found via a python script that generated avg # of targets for all chords 
 initialGuess:: (Chord, GameState)
 initialGuess = (pitch, gstate)
-             where pitch  = [Pitch 'A' '1', Pitch 'B' '1', Pitch 'D' '2']
+             where pitch  = [Pitch 'D' '3', Pitch 'F' '1', Pitch 'G' '3']
                    gstate = GameState allPossibleChords
 
+-- inherently being handled by the testing script
+nextGuess :: (Chord, GameState) -> (Int, Int, Int) -> (Chord, GameState)
+nextGuess (chord, GameState (state)) fb = (newChord, GameState newState)
+                                        where newState = filterNewState chord fb state
+                                              newChord = selectNextGuess newState
+
+filterNewState :: Chord -> (Int, Int, Int) ->[Chord] -> [Chord]
+filterNewState _ _ [] = []
+filterNewState chord fb (x:xs)
+    | feedback chord x == fb = x:filterNewState chord fb xs
+    | otherwise              = filterNewState chord fb xs
+
+-- takes in prev GameState:[Chord]
+-- produces all possible feedbacks for remaining targets
+selectNextGuess :: [Chord] -> Chord
+selectNextGuess (x:xs) = snd (avgs!!0)
+                where groupd  = groupBy (\a b -> fst a == fst b) fbs
+                      fbs     = sort (map helper allSets)
+                      allSets = [(x,y) | x <- (x:xs), y <- (x:xs)]
+                      numElms = length allSets
+                      helper  = \x -> (uncurry feedback x, x)
+                      avgs    = sort (map (\x -> (((length x)*(length x)) `div` numElms, fst (snd (x!!0)))) groupd)
+ 
+--temp = selectNextGuess [[Pitch 'A' '1', Pitch 'B' '1', Pitch 'C' '1'], [Pitch 'A' '1', Pitch 'F' '1', Pitch 'C' '2']]
+-- *Main> temp2
+-- [((1,1,1),([A1,B1,C1],[A1,F1,C2])),((3,0,0),([A1,B1,C1],[A1,B1,C1])),((3,0,0),([A1,F1,C2],[A1,F1,C2])),((3,0,0),([A1,F1,C2],[A1,F1,C2]))]
+-- *Main> temp3 = groupBy (\a b -> fst a == fst b) temp2
+-- *Main> temp3
+-- [[((1,1,1),([A1,B1,C1],[A1,F1,C2]))],[((3,0,0),([A1,B1,C1],[A1,B1,C1])),((3,0,0),([A1,F1,C2],[A1,F1,C2])),((3,0,0),([A1,F1,C2],[A1,F1,C2]))]]
+-- *Main> map length temp3
+-- [1,3]
+-- *Main> 
