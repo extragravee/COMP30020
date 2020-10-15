@@ -109,7 +109,7 @@ def feedback(target, guess):
 # we never used the feedback score
 def guess_func(final):
 
-	to_test = []
+
 	feedbacks = []
 	avgs = []
 
@@ -122,12 +122,6 @@ def guess_func(final):
 		# record its feedback assuming that original picked
 		# s chord is the target
 		for t in final:
-
-			j = (s,t)
-			if j not in to_test:
-				to_test.append(j)
-			else:
-				break
 
 			fb = tuple(feedback(s,t))
 

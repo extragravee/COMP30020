@@ -31,18 +31,28 @@ Purpose: This file is intended to play the game of musician, a logical guessing
 import Data.List
 import Debug.Trace
 
+-- check every tenth starting chord
 main :: IO ()
-main = putStrLn $ "Average across 1330 chords: " ++ show answer
+main = putStrLn $ "Average across 1330 starting chords: " ++ show ((allStartingChords (take 100 all) all)/1330)
+    where all = allPossibleChords
 
-answer:: Double
-answer = (simulate_testing (take 5 allPossibleChords)) / 5
 
-simulate_testing :: [Chord] -> Double
-simulate_testing [] = 0
-simulate_testing (target:targets) = trace ("Chord: " ++ show target ++ "   " ++ show ans) ans + simulate_testing targets
-      where ans = keep_guessing target initialGuess
+allStartingChords :: [Chord]-> [Chord] -> Double
+allStartingChords [] all= 0.0
+allStartingChords (x:xs) all= trace ("STARTING CHORD: " ++ show x ++ " avg: " ++ show ans) ans + allStartingChords xs all
+    where ans    = answer x all
 
-keep_guessing :: Chord -> (Chord, GameState) -> (Double)
+answer:: Chord -> [Chord]-> Double
+answer starting all = (simulate_testing starting all all) / 1330
+
+
+simulate_testing :: Chord -> [Chord]-> [Chord] -> Double
+simulate_testing start [] _ = 0
+simulate_testing start (target:targets) all =  ans + simulate_testing start targets all
+      --trace (show target ++ " " ++ show ans)
+      where ans = keep_guessing target (start, GameState all)
+
+keep_guessing :: Chord -> (Chord, GameState) -> Double
 keep_guessing target (chord, state)
     | fb == (3,0,0) = 1
     | otherwise     = 1 + keep_guessing target (nextGuess (chord,state) fb) 
