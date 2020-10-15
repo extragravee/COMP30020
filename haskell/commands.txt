@@ -1,0 +1,6 @@
+ghc -prof -fprof-auto -rtsopts project2.hs
+./project2 +RTS -p
+
+for recording all terminal output
+script "output.txt" 
+./project2 +RTS -p && exit`

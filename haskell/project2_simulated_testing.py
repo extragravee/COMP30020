@@ -123,11 +123,11 @@ def guess_func(final):
 		# s chord is the target
 		for t in final:
 
-			# j = (s,t)
-			# if j not in to_test:
-			# 	to_test.append(j)
-			# else:
-			# 	break
+			j = (s,t)
+			if j not in to_test:
+				to_test.append(j)
+			else:
+				break
 
 			fb = tuple(feedback(s,t))
 
@@ -144,12 +144,11 @@ def guess_func(final):
 		# given the computation on grok
 		# sum of (count^2 / total) for each target s chord
 
-		avg = 0
 		denom = sum(list(distinct_fb.values()))
 		for key in distinct_fb:
-			avg += ((distinct_fb[key]**2))
+			avgs.append([distinct_fb[key]/denom,s])
 
-		avgs.append([avg/denom,s])
+		
 
 		# if counter >= 100:
 		# 	break
