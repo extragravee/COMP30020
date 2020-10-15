@@ -33,24 +33,22 @@ import Debug.Trace
 
 -- check every tenth starting chord
 main :: IO ()
-main = putStrLn $ "Average across 1330 starting chords: " ++ show ((allStartingChords (take 100 all) all)/1330)
+main = putStrLn $ "Average across 1330 chords: " ++show(answer all)
     where all = allPossibleChords
 
-
-allStartingChords :: [Chord]-> [Chord] -> Double
-allStartingChords [] all= 0.0
-allStartingChords (x:xs) all= trace ("STARTING CHORD: " ++ show x ++ " avg: " ++ show ans) ans + allStartingChords xs all
-    where ans    = answer x all
-
-answer:: Chord -> [Chord]-> Double
-answer starting all = (simulate_testing starting all all) / 1330
+-- all_answers:: Double
+-- all_answers = answer (take 1 all) all
+--     where all = allPossibleChords
 
 
-simulate_testing :: Chord -> [Chord]-> [Chord] -> Double
-simulate_testing start [] _ = 0
-simulate_testing start (target:targets) all =  ans + simulate_testing start targets all
-      --trace (show target ++ " " ++ show ans)
-      where ans = keep_guessing target (start, GameState all)
+answer:: [Chord] -> Double
+answer (all) = (simulate_testing all all) / 1330 
+
+
+simulate_testing :: [Chord]-> [Chord] -> Double
+simulate_testing [] _ = 0
+simulate_testing (target:targets) all = trace (show target ++ " " ++ show ans) ans + simulate_testing targets all
+      where ans = keep_guessing target initialGuess
 
 keep_guessing :: Chord -> (Chord, GameState) -> Double
 keep_guessing target (chord, state)
