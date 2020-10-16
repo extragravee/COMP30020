@@ -47,7 +47,8 @@ answer (all) = (simulate_testing all all) / 1330
 
 simulate_testing :: [Chord]-> [Chord] -> Double
 simulate_testing [] _ = 0
-simulate_testing (target:targets) all = trace (show target ++ " " ++ show ans) ans + simulate_testing targets all
+simulate_testing (target:targets) all = ans + simulate_testing targets all
+--trace (show target ++ " " ++ show ans)
       where ans = keep_guessing target initialGuess
 
 keep_guessing :: Chord -> (Chord, GameState) -> Double
@@ -170,7 +171,17 @@ data GameState = GameState [Chord]
  
 initialGuess:: (Chord, GameState)
 initialGuess = (pitch, gstate)
-             where pitch  = [Pitch 'A' '1', Pitch 'B' '1', Pitch 'C' '2']
+        --   where pitch  = [Pitch 'A' '1', Pitch 'B' '1', Pitch 'C' '2'] --4.46
+    --       where pitch  = [Pitch 'B' '3', Pitch 'G' '1', Pitch 'E' '1'] --4.43
+      --       where pitch  = [Pitch 'C' '2', Pitch 'F' '1', Pitch 'E' '1'] --4.45
+             --where pitch  = [Pitch 'D' '3', Pitch 'G' '2', Pitch 'A' '2'] --4.43
+        --     where pitch  = [Pitch 'A' '3', Pitch 'B' '2', Pitch 'C' '3'] --4.46
+             --where pitch  = [Pitch 'G' '3', Pitch 'G' '2', Pitch 'A' '3'] --4.54
+             -- where pitch  = [Pitch 'A' '2', Pitch 'A' '1', Pitch 'C' '1'] --4.54
+             -- where pitch  = [Pitch 'D' '1', Pitch 'D' '2', Pitch 'F' '2'] -- 4.63
+             -- where pitch  = [Pitch 'G' '3', Pitch 'E' '2', Pitch 'E' '3'] -- 4.60
+             -- where pitch  = [Pitch 'A' '1', Pitch 'E' '1', Pitch 'G' '2'] -- 4.47
+             where pitch  = [Pitch 'B' '3', Pitch 'G' '1', Pitch 'E' '1'] --
                    gstate = GameState allPossibleChords
 
 
