@@ -34,3 +34,5 @@ Once the composer has selected the target chord, the performer repeatedly choose
  - how many pitches in the guess are included in the target (correct pitches)
  - how many pitches have the right note but the wrong octave (correct notes)
  - how many pitches have the right octave but the wrong note (correct octaves) 
+
+This scipt makes an initial guess, and then based on the guess made and feedback received, it calculates the next best guess which would polarise the remaining set of possibilities, and minimise the entropy. Until eventually the final guess is found. Now 
