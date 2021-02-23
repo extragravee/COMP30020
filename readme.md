@@ -1,6 +1,6 @@
 Declarative Programming
 =======================
-Repo for COMP30020 subject at UniMelb
+Repo for COMP30020 subject at UniMelb. In this subject I learnt contraint logic programming using Prolog, as well as function programming using Haskell. 
 
 Table of contents
 -----------------
@@ -9,7 +9,7 @@ Table of contents
 
 Introduction <a name = "intro"> </a>
 ------------
-In this subject I learnt contraint logic programming using Prolog, as well as function programming using Haskell. I built 2 projects, one using prolog to play the card game <a href= "https://en.wikipedia.org/wiki/Cribbage">Cribbage</a>. No one plays this game anymore, but the gist is: <br>
+I built 2 projects, one using prolog to play the card game <a href= "https://en.wikipedia.org/wiki/Cribbage">Cribbage</a>. No one plays this game anymore, but the gist is: <br>
 
 You are trying to build the best hand. You can have:
 - Combinations of any number of cards totalling fifteen
