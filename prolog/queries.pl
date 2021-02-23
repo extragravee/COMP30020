@@ -1,13 +1,17 @@
 %check if element is member of a list
 %=====================================
 %base case, true if Elt is the first element
-member(Elt, [Elt|_]).
+%member(Elt, [Elt|_]).
+
+take(N, List, Front):-
+	append(Front, _, List),
+	length(Front, N).
 
 %Elt is member of list IF Elt is member of Rest of the list
 %head of predicate here splits the list into two parts (first time this runs the two parts are
 %empty list | entire list
-member(Elt, [_|Rest]) :-
-	member(Elt, Rest).
+%member(Elt, [_|Rest]) :-
+%	member(Elt, Rest).
 
 
 %check if two elements are adjacent
@@ -72,3 +76,9 @@ valid_card(card(Rank, _)) :-
         between(1, 10, Rank)
     ; memberchk(Rank, [ace, jack, queen, king])).   
 	
+
+%summing up a list
+sumlist([] , 0).
+sumlist([Head|Tail], Sum) :-
+    sumlist(Tail, S1),
+    Sum is Head + S1.

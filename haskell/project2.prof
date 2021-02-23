@@ -1,25 +1,25 @@
-	Fri Oct 16 13:16 2020 Time and Allocation Profiling Report  (Final)
+	Fri Oct 16 13:21 2020 Time and Allocation Profiling Report  (Final)
 
 	   project2 +RTS -p -RTS
 
-	total time  =      146.73 secs   (146726 ticks @ 1000 us, 1 processor)
-	total alloc = 131,518,351,968 bytes  (excludes profiling overheads)
+	total time  =      146.38 secs   (146377 ticks @ 1000 us, 1 processor)
+	total alloc = 130,203,841,872 bytes  (excludes profiling overheads)
 
 COST CENTRE               MODULE    SRC                           %time %alloc
 
-selectNextGuess.sortedFbs Main      project2.hs:250:15-34          37.1   17.9
-countElem                 Main      project2.hs:(123,1)-(125,52)   13.1   17.0
-==                        Main      project2.hs:69:15-16           11.9   19.2
-compare                   Main      project2.hs:69:19-21            8.5    0.0
-feedback.newTarget        Main      project2.hs:112:24-50           6.9    9.3
-feedback.newGuess         Main      project2.hs:113:24-50           6.8    9.0
-countElem.b               Main      project2.hs:125:35-52           2.9    7.7
+selectNextGuess.sortedFbs Main      project2.hs:250:15-34          37.1   18.0
+countElem                 Main      project2.hs:(123,1)-(125,52)   13.1   17.3
+==                        Main      project2.hs:69:15-16           11.8   18.9
+compare                   Main      project2.hs:69:19-21            9.3    0.0
+feedback.newTarget        Main      project2.hs:112:24-50           6.7    9.2
+feedback.newGuess         Main      project2.hs:113:24-50           6.5    8.9
+countElem.b               Main      project2.hs:125:35-52           2.8    7.7
 countElem.a               Main      project2.hs:124:35-53           2.5    7.7
-feedback.pitches          Main      project2.hs:114:24-71           1.9    1.9
-selectNextGuess.groupd.\  Main      project2.hs:253:44-57           1.8    0.9
-selectNextGuess.groupd    Main      project2.hs:253:15-68           1.4    2.3
+feedback.pitches          Main      project2.hs:114:24-71           2.0    1.9
+selectNextGuess.groupd.\  Main      project2.hs:253:44-57           1.9    0.9
+selectNextGuess.groupd    Main      project2.hs:253:15-68           1.3    2.3
 selectNextGuess.fbs       Main      project2.hs:249:15-77           1.2    3.3
-feedback                  Main      project2.hs:(111,1)-(116,77)    1.1    3.7
+feedback                  Main      project2.hs:(111,1)-(116,77)    1.1    3.8
 
 
                                                                                                            individual      inherited
@@ -34,85 +34,85 @@ MAIN                                 MAIN                  <built-in>           
     compare                          Main                  project2.hs:69:19-21         252      25270    0.0    0.0     0.0    0.0
    allPossibleChords.pitches         Main                  project2.hs:143:24-62        243          1    0.0    0.0     0.0    0.0
     allPossiblePitches               Main                  project2.hs:(137,1)-(138,78) 244          8    0.0    0.0     0.0    0.0
-  initialGuess                       Main                  project2.hs:(173,1)-(185,55) 248          1    0.0    0.0     0.0    0.0
-   initialGuess.gstate               Main                  project2.hs:185:20-55        257          1    0.0    0.0     0.0    0.0
-   initialGuess.pitch                Main                  project2.hs:184:20-73        254          1    0.0    0.0     0.0    0.0
+  initialGuess                       Main                  project2.hs:(173,1)-(185,52) 248          1    0.0    0.0     0.0    0.0
+   initialGuess.gstate               Main                  project2.hs:185:17-52        257          1    0.0    0.0     0.0    0.0
+   initialGuess.pitch                Main                  project2.hs:174:17-70        254          1    0.0    0.0     0.0    0.0
   main                               Main                  project2.hs:(36,1)-(37,33)   236          1    0.0    0.0    99.7   99.8
    answer                            Main                  project2.hs:45:1-48          238          1    0.0    0.0    99.7   99.8
     simulate_testing                 Main                  project2.hs:(49,1)-(52,51)   239       1331    0.0    0.0    99.7   99.8
      simulate_testing.ans            Main                  project2.hs:52:13-51         246       1330    0.0    0.0    99.7   99.8
-      keep_guessing                  Main                  project2.hs:(55,1)-(58,36)   247       5910    0.0    0.0    99.7   99.8
-       keep_guessing.fb              Main                  project2.hs:58:11-36         249       5910    0.0    0.0     0.0    0.0
-        feedback                     Main                  project2.hs:(111,1)-(116,77) 250       5910    0.0    0.0     0.0    0.0
-         feedback.newGuess           Main                  project2.hs:113:24-50        277       5910    0.0    0.0     0.0    0.0
-          ==                         Main                  project2.hs:69:15-16         278      36281    0.0    0.0     0.0    0.0
-         feedback.newTarget          Main                  project2.hs:112:24-50        253       5910    0.0    0.0     0.0    0.0
-          ==                         Main                  project2.hs:69:15-16         255      36281    0.0    0.0     0.0    0.0
-         feedback.notes              Main                  project2.hs:115:24-77        274       5910    0.0    0.0     0.0    0.0
-          countElem                  Main                  project2.hs:(123,1)-(125,52) 275       5910    0.0    0.0     0.0    0.0
-           countElem.a               Main                  project2.hs:124:35-53        279       5910    0.0    0.0     0.0    0.0
-            noteFromPitch            Main                  project2.hs:129:1-29         281       9758    0.0    0.0     0.0    0.0
-           countElem.b               Main                  project2.hs:125:35-52        276       5910    0.0    0.0     0.0    0.0
-            noteFromPitch            Main                  project2.hs:129:1-29         280       9758    0.0    0.0     0.0    0.0
-         feedback.octaves            Main                  project2.hs:116:24-77        288       5910    0.0    0.0     0.0    0.0
-          countElem                  Main                  project2.hs:(123,1)-(125,52) 289       5910    0.0    0.0     0.0    0.0
-           countElem.a               Main                  project2.hs:124:35-53        291       5910    0.0    0.0     0.0    0.0
-            octFromPitch             Main                  project2.hs:132:1-28         293       9758    0.0    0.0     0.0    0.0
-           countElem.b               Main                  project2.hs:125:35-52        290       5910    0.0    0.0     0.0    0.0
-            octFromPitch             Main                  project2.hs:132:1-28         292       9758    0.0    0.0     0.0    0.0
-         feedback.pitches            Main                  project2.hs:114:24-71        251       5910    0.0    0.0     0.0    0.0
-       nextGuess                     Main                  project2.hs:(197,1)-(199,73) 256       4580    0.0    0.0    99.7   99.8
-        nextGuess.newChord           Main                  project2.hs:199:39-73        258       4580    0.0    0.0    97.2   95.9
-         selectNextGuess             Main                  project2.hs:(248,1)-(256,72) 259       4580    0.0    0.0    97.2   95.9
-          selectNextGuess.avgs       Main                  project2.hs:255:15-53        294       4580    0.0    0.0     0.7    0.0
-           compare                   Main                  project2.hs:69:19-21         323      16322    0.0    0.0     0.0    0.0
+      keep_guessing                  Main                  project2.hs:(55,1)-(58,36)   247       5943    0.0    0.0    99.7   99.8
+       keep_guessing.fb              Main                  project2.hs:58:11-36         249       5943    0.0    0.0     0.0    0.0
+        feedback                     Main                  project2.hs:(111,1)-(116,77) 250       5943    0.0    0.0     0.0    0.0
+         feedback.newGuess           Main                  project2.hs:113:24-50        277       5943    0.0    0.0     0.0    0.0
+          ==                         Main                  project2.hs:69:15-16         278      35027    0.0    0.0     0.0    0.0
+         feedback.newTarget          Main                  project2.hs:112:24-50        253       5943    0.0    0.0     0.0    0.0
+          ==                         Main                  project2.hs:69:15-16         255      35027    0.0    0.0     0.0    0.0
+         feedback.notes              Main                  project2.hs:115:24-77        274       5943    0.0    0.0     0.0    0.0
+          countElem                  Main                  project2.hs:(123,1)-(125,52) 275       5943    0.0    0.0     0.0    0.0
+           countElem.a               Main                  project2.hs:124:35-53        279       5943    0.0    0.0     0.0    0.0
+            noteFromPitch            Main                  project2.hs:129:1-29         281       9798    0.0    0.0     0.0    0.0
+           countElem.b               Main                  project2.hs:125:35-52        276       5943    0.0    0.0     0.0    0.0
+            noteFromPitch            Main                  project2.hs:129:1-29         280       9798    0.0    0.0     0.0    0.0
+         feedback.octaves            Main                  project2.hs:116:24-77        288       5943    0.0    0.0     0.0    0.0
+          countElem                  Main                  project2.hs:(123,1)-(125,52) 289       5943    0.0    0.0     0.0    0.0
+           countElem.a               Main                  project2.hs:124:35-53        291       5943    0.0    0.0     0.0    0.0
+            octFromPitch             Main                  project2.hs:132:1-28         293       9798    0.0    0.0     0.0    0.0
+           countElem.b               Main                  project2.hs:125:35-52        290       5943    0.0    0.0     0.0    0.0
+            octFromPitch             Main                  project2.hs:132:1-28         292       9798    0.0    0.0     0.0    0.0
+         feedback.pitches            Main                  project2.hs:114:24-71        251       5943    0.0    0.0     0.0    0.0
+       nextGuess                     Main                  project2.hs:(197,1)-(199,73) 256       4613    0.0    0.0    99.7   99.8
+        nextGuess.newChord           Main                  project2.hs:199:39-73        258       4613    0.0    0.0    97.3   96.0
+         selectNextGuess             Main                  project2.hs:(248,1)-(256,72) 259       4613    0.0    0.0    97.3   96.0
+          selectNextGuess.avgs       Main                  project2.hs:255:15-53        294       4613    0.0    0.0     0.7    0.0
+           compare                   Main                  project2.hs:69:19-21         323      16309    0.0    0.0     0.0    0.0
            selectNextGuess.helper    Main                  project2.hs:256:15-72        320          0    0.0    0.0     0.6    0.0
-            selectNextGuess.helper.\ Main                  project2.hs:256:33-72        321      40600    0.6    0.0     0.6    0.0
-          selectNextGuess.fbs        Main                  project2.hs:249:15-77        297       4580    1.2    3.3    47.4   74.8
-           feedback                  Main                  project2.hs:(111,1)-(116,77) 299   23671252    1.1    3.5    46.2   71.5
-            feedback.newTarget       Main                  project2.hs:112:24-50        301   23671252    6.3    8.6    11.9   17.5
-             ==                      Main                  project2.hs:69:15-16         302  182833649    5.5    8.9     5.5    8.9
-            feedback.pitches         Main                  project2.hs:114:24-71        300   23671252    1.8    1.7     1.8    1.7
-            feedback.newGuess        Main                  project2.hs:113:24-50        306   23670571    6.5    8.6    12.0   17.5
-             ==                      Main                  project2.hs:69:15-16         307  182830290    5.5    8.9     5.5    8.9
-            feedback.notes           Main                  project2.hs:115:24-77        303   23670571    0.1    0.0    10.4   17.1
-             countElem               Main                  project2.hs:(123,1)-(125,52) 304   23670571    7.0    9.6    10.2   17.1
-              countElem.a            Main                  project2.hs:124:35-53        308   23670571    1.2    3.7     1.5    3.7
-               noteFromPitch         Main                  project2.hs:129:1-29         310   55701123    0.3    0.0     0.3    0.0
-              countElem.b            Main                  project2.hs:125:35-52        305   23670571    1.4    3.7     1.7    3.7
-               noteFromPitch         Main                  project2.hs:129:1-29         309   55701123    0.3    0.0     0.3    0.0
-            feedback.octaves         Main                  project2.hs:116:24-77        311   23670439    0.1    0.0     9.0   14.3
-             countElem               Main                  project2.hs:(123,1)-(125,52) 312   23670439    5.6    6.8     8.9   14.3
-              countElem.a            Main                  project2.hs:124:35-53        314   23670439    1.3    3.7     1.6    3.7
-               octFromPitch          Main                  project2.hs:132:1-28         316   55700841    0.3    0.0     0.3    0.0
-              countElem.b            Main                  project2.hs:125:35-52        313   23670439    1.4    3.7     1.7    3.7
-               octFromPitch          Main                  project2.hs:132:1-28         315   55700841    0.3    0.0     0.3    0.0
-          selectNextGuess.groupd     Main                  project2.hs:253:15-68        295       4580    1.4    2.3     3.2    3.2
-           selectNextGuess.groupd.\  Main                  project2.hs:253:44-57        318   23667336    1.8    0.9     1.8    0.9
-          selectNextGuess.helper     Main                  project2.hs:256:15-72        319       4580    0.0    0.0     0.0    0.0
-          selectNextGuess.sortedFbs  Main                  project2.hs:250:15-34        296       4580   37.1   17.9    45.7   17.9
-           compare                   Main                  project2.hs:69:19-21         317  302750584    8.5    0.0     8.5    0.0
-          selectNextGuess.numElms    Main                  project2.hs:251:15-42        322       3916    0.3    0.0     0.3    0.0
-        nextGuess.newState           Main                  project2.hs:198:39-78        260       4580    0.0    0.0     2.5    3.9
-         filterNewState              Main                  project2.hs:(217,1)-(220,57) 261    1943946    0.1    0.1     2.5    3.9
-          feedback                   Main                  project2.hs:(111,1)-(116,77) 262    1939366    0.1    0.3     2.4    3.8
-           feedback.newTarget        Main                  project2.hs:112:24-50        264    1939366    0.6    0.8     1.1    1.5
-            ==                       Main                  project2.hs:69:15-16         265   15811581    0.5    0.8     0.5    0.8
-           feedback.pitches          Main                  project2.hs:114:24-71        263    1939366    0.1    0.1     0.1    0.1
-           feedback.newGuess         Main                  project2.hs:113:24-50        269     955144    0.3    0.4     0.5    0.8
-            ==                       Main                  project2.hs:69:15-16         270    8110889    0.2    0.4     0.2    0.4
-           feedback.notes            Main                  project2.hs:115:24-77        266     955144    0.0    0.0     0.5    0.8
-            countElem                Main                  project2.hs:(123,1)-(125,52) 267     955144    0.3    0.4     0.5    0.8
-             countElem.a             Main                  project2.hs:124:35-53        271     955144    0.1    0.2     0.1    0.2
-              noteFromPitch          Main                  project2.hs:129:1-29         273    2610482    0.0    0.0     0.0    0.0
-             countElem.b             Main                  project2.hs:125:35-52        268     955144    0.1    0.2     0.1    0.2
-              noteFromPitch          Main                  project2.hs:129:1-29         272    2610482    0.0    0.0     0.0    0.0
-           feedback.octaves          Main                  project2.hs:116:24-77        282     411046    0.0    0.0     0.2    0.3
-            countElem                Main                  project2.hs:(123,1)-(125,52) 283     411046    0.1    0.1     0.2    0.3
-             countElem.a             Main                  project2.hs:124:35-53        285     411046    0.0    0.1     0.0    0.1
-              octFromPitch           Main                  project2.hs:132:1-28         287    1098070    0.0    0.0     0.0    0.0
-             countElem.b             Main                  project2.hs:125:35-52        284     411046    0.0    0.1     0.0    0.1
-              octFromPitch           Main                  project2.hs:132:1-28         286    1098070    0.0    0.0     0.0    0.0
+            selectNextGuess.helper.\ Main                  project2.hs:256:33-72        321      40026    0.6    0.0     0.6    0.0
+          selectNextGuess.fbs        Main                  project2.hs:249:15-77        297       4613    1.2    3.3    46.8   74.8
+           feedback                  Main                  project2.hs:(111,1)-(116,77) 299   23559073    1.0    3.5    45.6   71.4
+            feedback.newTarget       Main                  project2.hs:112:24-50        301   23559073    6.1    8.5    11.6   17.2
+             ==                      Main                  project2.hs:69:15-16         302  178513260    5.5    8.8     5.5    8.8
+            feedback.pitches         Main                  project2.hs:114:24-71        300   23559073    1.8    1.7     1.8    1.7
+            feedback.newGuess        Main                  project2.hs:113:24-50        306   23558368    6.3    8.5    11.8   17.2
+             ==                      Main                  project2.hs:69:15-16         307  178509706    5.5    8.8     5.5    8.8
+            feedback.notes           Main                  project2.hs:115:24-77        303   23558368    0.1    0.0    10.4   17.3
+             countElem               Main                  project2.hs:(123,1)-(125,52) 304   23558368    7.1    9.8    10.2   17.3
+              countElem.a            Main                  project2.hs:124:35-53        308   23558368    1.2    3.7     1.5    3.7
+               noteFromPitch         Main                  project2.hs:129:1-29         310   55457808    0.3    0.0     0.3    0.0
+              countElem.b            Main                  project2.hs:125:35-52        305   23558368    1.4    3.7     1.7    3.7
+               noteFromPitch         Main                  project2.hs:129:1-29         309   55457808    0.3    0.0     0.3    0.0
+            feedback.octaves         Main                  project2.hs:116:24-77        311   23558262    0.1    0.0     9.0   14.4
+             countElem               Main                  project2.hs:(123,1)-(125,52) 312   23558262    5.6    6.9     8.9   14.4
+              countElem.a            Main                  project2.hs:124:35-53        314   23558262    1.2    3.7     1.5    3.7
+               octFromPitch          Main                  project2.hs:132:1-28         316   55457582    0.3    0.0     0.3    0.0
+              countElem.b            Main                  project2.hs:125:35-52        313   23558262    1.4    3.7     1.7    3.7
+               octFromPitch          Main                  project2.hs:132:1-28         315   55457582    0.3    0.0     0.3    0.0
+          selectNextGuess.groupd     Main                  project2.hs:253:15-68        295       4613    1.3    2.3     3.2    3.2
+           selectNextGuess.groupd.\  Main                  project2.hs:253:44-57        318   23555118    1.9    0.9     1.9    0.9
+          selectNextGuess.helper     Main                  project2.hs:256:15-72        319       4613    0.0    0.0     0.0    0.0
+          selectNextGuess.sortedFbs  Main                  project2.hs:250:15-34        296       4613   37.1   18.0    46.4   18.0
+           compare                   Main                  project2.hs:69:19-21         317  324654777    9.3    0.0     9.3    0.0
+          selectNextGuess.numElms    Main                  project2.hs:251:15-42        322       3955    0.3    0.0     0.3    0.0
+        nextGuess.newState           Main                  project2.hs:198:39-78        260       4613    0.0    0.0     2.4    3.8
+         filterNewState              Main                  project2.hs:(217,1)-(220,57) 261    1942153    0.1    0.1     2.4    3.8
+          feedback                   Main                  project2.hs:(111,1)-(116,77) 262    1937540    0.1    0.3     2.2    3.7
+           feedback.newTarget        Main                  project2.hs:112:24-50        264    1937540    0.6    0.7     1.0    1.5
+            ==                       Main                  project2.hs:69:15-16         265   15116593    0.4    0.7     0.4    0.7
+           feedback.pitches          Main                  project2.hs:114:24-71        263    1937540    0.1    0.1     0.1    0.1
+           feedback.newGuess         Main                  project2.hs:113:24-50        269     951579    0.2    0.4     0.4    0.8
+            ==                       Main                  project2.hs:69:15-16         270    7873228    0.2    0.4     0.2    0.4
+           feedback.notes            Main                  project2.hs:115:24-77        266     951579    0.0    0.0     0.4    0.8
+            countElem                Main                  project2.hs:(123,1)-(125,52) 267     951579    0.3    0.4     0.4    0.8
+             countElem.a             Main                  project2.hs:124:35-53        271     951579    0.0    0.2     0.1    0.2
+              noteFromPitch          Main                  project2.hs:129:1-29         273    2599688    0.0    0.0     0.0    0.0
+             countElem.b             Main                  project2.hs:125:35-52        268     951579    0.1    0.2     0.1    0.2
+              noteFromPitch          Main                  project2.hs:129:1-29         272    2599688    0.0    0.0     0.0    0.0
+           feedback.octaves          Main                  project2.hs:116:24-77        282     406817    0.0    0.0     0.2    0.3
+            countElem                Main                  project2.hs:(123,1)-(125,52) 283     406817    0.1    0.1     0.2    0.3
+             countElem.a             Main                  project2.hs:124:35-53        285     406817    0.0    0.1     0.0    0.1
+              octFromPitch           Main                  project2.hs:132:1-28         287    1085692    0.0    0.0     0.0    0.0
+             countElem.b             Main                  project2.hs:125:35-52        284     406817    0.0    0.1     0.0    0.1
+              octFromPitch           Main                  project2.hs:132:1-28         286    1085692    0.0    0.0     0.0    0.0
    main.all                          Main                  project2.hs:37:11-33         240          1    0.0    0.0     0.0    0.0
  CAF                                 GHC.Conc.Signal       <entire-module>              226          0    0.0    0.0     0.0    0.0
  CAF                                 GHC.Float             <entire-module>              220          0    0.0    0.0     0.0    0.0
