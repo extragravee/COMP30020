@@ -4,9 +4,9 @@ Repo for COMP30020 subject at UniMelb. In this subject I learnt contraint logic 
 
 Table of contents
 -----------------
-<a href="#intro"> Introduction </a>
-<a href="#p1"> Project 1 - Cribbage (Prolog) </a>
-<a href="#p2"> Project 2 - Musical Chord (Haskell) </a>
+<a href="#intro"> Introduction </a><br>
+<a href="#p1"> Project 1 - Cribbage (Prolog) </a><br>
+<a href="#p2"> Project 2 - Musical Chord (Haskell) </a><br>
 
 Introduction <a name = "intro"> </a>
 ------------
